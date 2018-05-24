@@ -22,7 +22,6 @@ def lambda_handler(event, context):
 
             for dev in i['BlockDeviceMappings']:
                 vol_id = dev['Ebs']['VolumeId']
-                dev_attachment = dev['DeviceName']
                 snapshot_id = create_snapshot(vol_id, i['InstanceId'])
                 create_tags(snapshot_id, instance_name, delete_fmt)
 
